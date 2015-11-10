@@ -16,10 +16,16 @@ const parse = store => next => action => {
     }
     if (match) {
       store.dispatch({
-        type: match.toUpperCase(),
+        type: 'UPDATE',
         payload: {
-          value: action.payload.value
+          verb: match,
+          noun: parts[1] ? parts[1].toLowerCase : ''
         }
+      })
+    }
+    else {
+      store.dispatch({
+        type: 'INVALID'
       })
     }
   }

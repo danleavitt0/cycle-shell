@@ -1,10 +1,15 @@
+import {update} from './API'
+console.log(update)
+
 function reducer (state, action) {
   switch (action.type) {
-    case 'NORTH':
+    case 'UPDATE':
+      let {verb, noun} = action.payload
+      return update(state, verb, noun)
+    case 'INVALID':
       return {
         ...state,
-        text: [action.payload.value, ...state.text],
-        position: state.position + 1
+        text: [...state.text, 'Invalid verb/noun entry']
       }
   }
   return state

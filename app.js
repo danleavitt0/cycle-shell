@@ -3,7 +3,7 @@ import element from 'virtex-element'
 function app ({text}) {
   return (
     <div>
-      {text.map(sentence => <span>{sentence}</span>)}
+      {text.map(sentence => <div>{sentence}</div>)}
       <input onKeyPress={e => handleSubmit(e)}/>
     </div>
   )
