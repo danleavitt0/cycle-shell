@@ -1,10 +1,8 @@
-var webpack = require('webpack');
-
-require('es6-promise').polyfill();
+require('es6-promise').polyfill()
 
 module.exports = {
   entry: [
-    './index'
+    __dirname + '/src/index.js'
   ],
   output: {
     path: __dirname + '/dist',
@@ -27,4 +25,4 @@ module.exports = {
   devServer: {
     contentBase: './dist'
   }
-};
+}

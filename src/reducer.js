@@ -1,5 +1,4 @@
 import {update} from './API'
-console.log(update)
 
 function reducer (state, action) {
   switch (action.type) {
