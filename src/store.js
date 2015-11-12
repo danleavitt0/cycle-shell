@@ -10,4 +10,4 @@ const createStoreWithMiddleware = applyMiddleware(
   parse
 )(createStore)
 
-export default initialState => createStoreWithMiddleware(reducer, initialState)
+export default (initialState, update) => createStoreWithMiddleware(reducer(update), initialState)

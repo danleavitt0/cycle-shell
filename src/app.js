@@ -1,9 +1,9 @@
 import element from 'virtex-element'
 
-function app ({text}) {
+function app ({log, view}) {
   return (
     <div>
-      {text.map(sentence => <div>{sentence}</div>)}
+      {log.map(step => view(step))}
       <input onKeyPress={e => handleSubmit(e)}/>
     </div>
   )
@@ -12,6 +12,7 @@ function app ({text}) {
 function handleSubmit (e) {
   let {value} = e.target
   if (e.keyCode === 13) {
+    let parts = value.split(' ')
     return {
       type: 'SUBMIT',
       payload: {

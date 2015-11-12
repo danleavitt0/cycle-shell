@@ -2,7 +2,7 @@ require('es6-promise').polyfill()
 
 module.exports = {
   entry: [
-    __dirname + '/src/index.js'
+    __dirname + '/index.js'
   ],
   output: {
     path: __dirname + '/dist',
