@@ -1,13 +1,16 @@
 import {applyMiddleware, createStore} from 'redux'
 import reducer from './reducer'
-import dom from 'virtex-dom'
-import component from 'virtex-component'
-import parse from './middleware/parse'
+import effects from 'redux-effects'
+import events from 'redux-effects-events'
+import logger from 'redux-logger'
+import multi from 'redux-multi'
 
-const createStoreWithMiddleware = applyMiddleware(
-  dom(document),
-  component,
-  parse
-)(createStore)
+const middlewares = [
+  multi,
+  effects,
+  events()
+]
+
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
 
 export default (initialState, update) => createStoreWithMiddleware(reducer(update), initialState)

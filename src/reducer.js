@@ -1,16 +1,26 @@
 import _ from 'lodash'
+import {SUBMIT, INITIALIZE} from './actions'
+import ephemeral from 'redux-ephemeral'
 
 function reducer (update, state, action) {
+  console.log(action.type)
   switch (action.type) {
-    case 'UPDATE':
-      const stateCopy = _.clone(state.user, true)
-      let {verb, noun} = action.payload
+    case INITIALIZE:
       return {
         ...state,
-        log: [...state.log, update(stateCopy, verb, noun)]
+        log: [...state.log, state.user]
+      }
+    case SUBMIT:
+      const stateCopy = _.clone(state.user, true)
+      let {verb, noun} = action.payload
+      const user = update(stateCopy, verb, noun)
+      return {
+        ...state,
+        user: user,
+        log: [...state.log, user]
       }
   }
-  return state
+  return ephemeral(state, action)
 }
 
 export default update => reducer.bind(this, update)
