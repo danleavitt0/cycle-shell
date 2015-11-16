@@ -3,7 +3,6 @@ import {SUBMIT, INITIALIZE} from './actions'
 import ephemeral from 'redux-ephemeral'
 
 function reducer (update, state, action) {
-  console.log(action.type)
   switch (action.type) {
     case INITIALIZE:
       return {
@@ -12,12 +11,13 @@ function reducer (update, state, action) {
       }
     case SUBMIT:
       const stateCopy = _.clone(state.user, true)
-      let {verb, noun} = action.payload
+      const {verb, noun} = action.payload
       const user = update(stateCopy, verb, noun)
+      const prevAction = verb + ' ' + noun
       return {
         ...state,
         user: user,
-        log: [...state.log, user]
+        log: [...state.log, {...user, action: prevAction}]
       }
   }
   return ephemeral(state, action)

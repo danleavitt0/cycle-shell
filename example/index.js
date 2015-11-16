@@ -27,6 +27,7 @@ function update (state, verb, noun) {
 }
 
 function view (state) {
+  console.log(state)
   let {currentRoom} = state
   let {title, paragraph} = currentRoom
   return {

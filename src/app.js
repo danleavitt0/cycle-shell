@@ -35,7 +35,10 @@ function render ({log, view, key, state, score}, childState) {
           {fixedLog.map((step, i) => {
             let parts = view(step)
             return (
-              <FeedItem key={'item' + i} item={parts} />
+              <FeedItem
+                key={'item' + i}
+                action={step.action}
+                item={parts} />
             )
           })}
         </div>

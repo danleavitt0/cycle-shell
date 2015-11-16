@@ -47,7 +47,7 @@ function render ({key, state}, childState) {
   )
 
   function handleSubmit (e) {
-    const text = e.target.value.trim()
+    const text = e.target.value
     const parts = text.split(' ')
     const noun = parts[1] ? parts[1] : ''
     return text && e.which === ENTER_KEY

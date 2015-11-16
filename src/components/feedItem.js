@@ -12,23 +12,21 @@ const getStyles = () => {
       margin: '5px 0',
       fontWeight: 'bold'
     },
-    status: {
-
-    },
-    paragraph: {
-
+    action: {
+      marginBottom: '5px',
+      fontStyle: 'italic'
     }
   }
 }
 
 function render (props, childState) {
   let styles = getStyles()
-  let {title, status, paragraph} = props.item
+  // let {title, status, paragraph, response} = props.item
+  let {action} = props
   return (
     <div style={styles.container}>
-      <div style={styles.title}>{title}</div>
-      <div style={styles.status}>{status}</div>
-      <div style={styles.paragraph}>{paragraph}</div>
+      {action && <div style={styles.action}> > {action} </div>}
+      <div style={styles.paragraph}>{props.item}</div>
     </div>
   )
 }
