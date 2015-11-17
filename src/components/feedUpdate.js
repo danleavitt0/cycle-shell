@@ -1,11 +1,16 @@
 import element from 'vdom-element'
 import localize, {localAction} from 'vdux-local'
 import {submit} from '../actions'
+import _ from 'lodash'
 
 const ENTER_KEY = 13
 
 const SET_TEXT = 'SET_TEXT'
+const SET_FOCUS = 'SET_FOCUS'
+const REMOVE_FOCUS = 'REMOVE_FOCUS'
 const setText = localAction(SET_TEXT)
+const setFocus = localAction(SET_FOCUS)
+const removeFocus = localAction(REMOVE_FOCUS)
 
 const getStyles = () => {
   return {
@@ -13,38 +18,62 @@ const getStyles = () => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'rgba(255,99,71, 0.3)',
       padding: '15px'
     },
     input: {
       padding: '10px',
-      width: '50%',
-      fontSize: '16px'
+      width: '80%',
+      fontSize: '16px',
+      borderRadius: '10px',
+      border: '1px solid rgba(51,51,51,0.2)',
+      textIndent: '25px',
+      transition: 'all .3s ease-in-out'
+    },
+    caret: {
+      position: 'relative',
+      color: 'rgba(51,51,51,0.2)',
+      left: '25px'
+    },
+    focused: {
+      border: '1px solid rgba(51,51,51,0.7)'
     }
   }
 }
 
+const merge = (base, ...args) => _.defaultsDeep(base, ...args)
+
 function initialState () {
   return {
-    text: ''
+    text: '',
+    focus: true
   }
 }
 
 function render ({key, state}, childState) {
   let styles = getStyles()
-  let {text} = state
+  let {text, focus} = state
 
   return (
     <div style={styles.container}>
+      <div style={styles.caret}> > </div>
       <input
         autofocus
-        style={styles.input}
+        style={focus ? merge(styles.focused, styles.input) : styles.input}
         type='text'
         value={text}
-        placeholder="What's next?"
+        ev-focus={handleFocus}
+        ev-blur={handleBlur}
         ev-keyup={handleSubmit} />
     </div>
   )
+
+  function handleFocus () {
+    return setFocus(key)
+  }
+
+  function handleBlur () {
+    return removeFocus(key)
+  }
 
   function handleSubmit (e) {
     const text = e.target.value
@@ -62,6 +91,16 @@ function reducer (state, action) {
       return {
         ...state,
         text: action.payload
+      }
+    case SET_FOCUS:
+      return {
+        ...state,
+        focus: true
+      }
+    case REMOVE_FOCUS:
+      return {
+        ...state,
+        focus: false
       }
   }
   return state

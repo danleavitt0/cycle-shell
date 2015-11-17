@@ -2,7 +2,7 @@ import _ from 'lodash'
 import element from 'vdom-element'
 import localize, {localAction} from 'vdux-local'
 import Header from './components/header'
-import FeedItem from './components/feedItem'
+import Card from './components/card'
 import FeedUpdate from './components/feedUpdate'
 
 const styles = {
@@ -10,13 +10,8 @@ const styles = {
     fontFamily: 'Roboto, sans-serif'
   },
   container: {
-    width: '80%',
-    margin: '20px auto',
-    boxShadow: '0 0 2px 2px rgba(255,99,71, 0.1)',
-    borderRadius: '10px'
-  },
-  feed: {
-
+    width: '50%',
+    margin: '20px auto'
   }
 }
 
@@ -28,17 +23,18 @@ function render ({log, view, key, state, score}, childState) {
       <Header
         key='header'
         title='Zork'
-        score={score || 0} />
-      <div style={styles.container}>
+        score={score || 0}>
         <FeedUpdate key='feed-update' {...childState('feed-update')} />
+      </Header>
+      <div style={styles.container}>
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
-            let parts = view(step)
+            let message = view(step)
             return (
-              <FeedItem
+              <Card
                 key={'item' + i}
                 action={step.action}
-                item={parts} />
+                item={message} />
             )
           })}
         </div>

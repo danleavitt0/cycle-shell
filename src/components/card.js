@@ -4,8 +4,10 @@ import localize, {localAction} from 'vdux-local'
 const getStyles = () => {
   return {
     container: {
-      borderBottom: '1px solid rgba(255,99,71, 0.2)',
-      padding: '15px'
+      padding: '20px 25px',
+      backgroundColor: 'white',
+      boxShadow: '0 0 5px 0 rgba(0,0,0,0.2)',
+      margin: '10px'
     },
     title: {
       fontSize: '18px',
@@ -21,7 +23,6 @@ const getStyles = () => {
 
 function render (props, childState) {
   let styles = getStyles()
-  // let {title, status, paragraph, response} = props.item
   let {action} = props
   return (
     <div style={styles.container}>
