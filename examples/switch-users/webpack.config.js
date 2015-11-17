@@ -5,7 +5,7 @@ module.exports = {
     __dirname + '/index.js'
   ],
   output: {
-    path: __dirname + '/dist',
+    path: '../dist',
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -23,6 +23,6 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: '../dist'
   }
 }

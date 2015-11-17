@@ -30,12 +30,16 @@ const getStyles = () => {
       transition: 'all .3s ease-in-out'
     },
     caret: {
+      transition: 'color .3s ease-in-out',
       position: 'relative',
       color: 'rgba(51,51,51,0.2)',
       left: '25px'
     },
-    focused: {
+    focusedInput: {
       border: '1px solid rgba(51,51,51,0.7)'
+    },
+    focusedCaret: {
+      color: 'rgba(51,51,51,0.7)'
     }
   }
 }
@@ -55,10 +59,10 @@ function render ({key, state}, childState) {
 
   return (
     <div style={styles.container}>
-      <div style={styles.caret}> > </div>
+      <div style={focus ? merge(styles.focusedCaret, styles.caret) : styles.caret}> > </div>
       <input
         autofocus
-        style={focus ? merge(styles.focused, styles.input) : styles.input}
+        style={focus ? merge(styles.focusedInput, styles.input) : styles.input}
         type='text'
         value={text}
         ev-focus={handleFocus}

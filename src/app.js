@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import element from 'vdom-element'
-import localize, {localAction} from 'vdux-local'
+import localize from 'vdux-local'
 import Header from './components/header'
 import Card from './components/card'
 import FeedUpdate from './components/feedUpdate'
@@ -9,24 +9,26 @@ const styles = {
   app: {
     fontFamily: 'Roboto, sans-serif'
   },
-  container: {
-    width: '50%',
-    margin: '20px auto'
+  feed: {
+    margin: '20px 30%'
+  },
+  header: {
+    padding: '0 30%'
   }
 }
 
-function render ({log, view, key, state, score}, childState) {
-  let {text} = state
+function render ({log, view, key, state, user}, childState) {
   let fixedLog = _.clone(log).reverse()
   return (
     <div style={styles.app}>
       <Header
         key='header'
-        title='Zork'
-        score={score || 0}>
+        title={user.title || 'Zork'}
+        score={user.score || 0}
+        style={styles.header}>
         <FeedUpdate key='feed-update' {...childState('feed-update')} />
       </Header>
-      <div style={styles.container}>
+      <div>
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
             let message = view(step)
@@ -41,15 +43,6 @@ function render ({log, view, key, state, score}, childState) {
       </div>
     </div>
   )
-
-  function handleSubmit (e) {
-    const text = e.target.value.trim()
-    const parts = text.split(' ')
-    const noun = parts[1] ? parts[1] : ''
-    return text && e.which === ENTER_KEY
-      ? [setText(key, ''), submit(parts[0], noun)]
-      : setText(key, text)
-  }
 }
 
 export default localize({

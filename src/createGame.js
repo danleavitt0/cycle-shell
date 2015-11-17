@@ -1,12 +1,13 @@
 import createStore from './store'
 import element from 'vdom-element'
 import {listen} from 'virtual-component'
-import {handleOnce} from 'redux-effects-events'
 import {initializeApp} from './actions'
 import vdux from 'vdux'
 import App from './app'
 
-export default (initialState, userUpdate = () => {}, view = () => {}) => {
+const defaultView = (state) => state.message
+
+export default (initialState, userUpdate = () => {}, view = defaultView) => {
   const store = createStore({log: [], user: initialState}, userUpdate)
 
   function start () {

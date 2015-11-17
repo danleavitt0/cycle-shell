@@ -1,5 +1,5 @@
 import element from 'vdom-element'
-import localize, {localAction} from 'vdux-local'
+import localize from 'vdux-local'
 
 const getStyles = () => {
   return {
@@ -7,7 +7,7 @@ const getStyles = () => {
       padding: '20px 25px',
       backgroundColor: 'white',
       boxShadow: '0 0 5px 0 rgba(0,0,0,0.2)',
-      margin: '10px'
+      marginBottom: '10px'
     },
     title: {
       fontSize: '18px',
@@ -32,14 +32,6 @@ function render (props, childState) {
   )
 }
 
-function reducer (state, action) {
-  switch (action.type) {
-
-  }
-  return state
-}
-
 export default localize({
-  render,
-  reducer
+  render
 })

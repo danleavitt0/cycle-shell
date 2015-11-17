@@ -1,11 +1,11 @@
 import element from 'vdom-element'
-import localize, {localAction} from 'vdux-local'
+import localize from 'vdux-local'
+import _ from 'lodash'
 
 const getStyles = () => {
   return {
     header: {
       height: '64px',
-      padding: '0 20%',
       display: 'flex',
       alignItems: 'center',
       backgroundColor: 'white',
@@ -13,7 +13,7 @@ const getStyles = () => {
       color: '#333'
     },
     title: {
-      fontSize: '26px'
+      fontSize: '20px'
     },
     inner: {
       flex: 1
@@ -21,11 +21,13 @@ const getStyles = () => {
   }
 }
 
+const merge = (base, ...args) => _.defaultsDeep(base, ...args)
+
 function render (props, childState) {
   let styles = getStyles()
   let {title, score, children} = props
   return (
-    <div style={styles.header}>
+    <div style={merge(props.style, styles.header)}>
       <div style={styles.title}> {title && title} </div>
       <div style={styles.inner}>
         {children && children.map(child => <div>{child}</div>)}
@@ -35,14 +37,6 @@ function render (props, childState) {
   )
 }
 
-function reducer (state, action) {
-  switch (action.type) {
-
-  }
-  return state
-}
-
 export default localize({
-  render,
-  reducer
+  render
 })
