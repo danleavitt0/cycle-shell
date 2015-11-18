@@ -67,6 +67,13 @@ function update (state, verb, noun) {
     } else {
       state.message = 'Command not found'
     }
+  } else if (state.currentRoom.name === 'kitchen') {
+    if (verb === 'move') {
+      state.currentRoom = rooms['hallway']
+      state.message = state.currentRoom.description
+    } else {
+      state.message = 'Command not found'
+    }
   }
   return state
 }
