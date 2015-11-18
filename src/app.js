@@ -21,7 +21,7 @@ const styles = {
 }
 
 function render ({log, view, key, state, user}, childState) {
-  let fixedLog = _.clone(log).reverse()
+  const fixedLog = _.clone(log).reverse()
   return (
     <div style={styles.app}>
       <Header
@@ -34,7 +34,7 @@ function render ({log, view, key, state, user}, childState) {
       <div>
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
-            let message = view(step)
+            const message = view(step)
             return (
               <Card
                 key={'item' + i}
