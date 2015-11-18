@@ -1,6 +1,6 @@
 {
   "name": "simple-zork",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
@@ -21,6 +21,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "devDependencies": {
+    "babel": "^6.1.18",
     "babel-cli": "^6.1.18",
     "babel-core": "^6.1.4",
     "babel-loader": "^6.0.0",

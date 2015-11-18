@@ -27,7 +27,8 @@ const getStyles = () => {
       borderRadius: '10px',
       border: '1px solid rgba(51,51,51,0.2)',
       textIndent: '25px',
-      transition: 'all .3s ease-in-out'
+      transition: 'all .3s ease-in-out',
+      outline: 'none'
     },
     caret: {
       transition: 'color .3s ease-in-out',

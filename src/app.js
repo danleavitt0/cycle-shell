@@ -7,7 +7,10 @@ import FeedUpdate from './components/feedUpdate'
 
 const styles = {
   app: {
-    fontFamily: 'Roboto, sans-serif'
+    fontFamily: 'Roboto, sans-serif',
+    backgroundColor: '#f5f5f5',
+    minHeight: '100vh',
+    height: '100%'
   },
   feed: {
     margin: '20px 30%'
