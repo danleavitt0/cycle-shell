@@ -20,8 +20,7 @@ var rooms = {
 var initialState = {
   title: 'Zork',
   message: 'Welcome to the game. Type commands into the input above to start.',
-  currentRoom: rooms['cellar'],
-  inventory: [],
+  currentRoom: rooms.cellar,
   score: 0
 }
 
@@ -43,7 +42,7 @@ function update (state, verb, noun) {
         if (state.currentRoom.completed === false) {
           state.message = 'The door is locked. You need to find a key before moving on.'
         } else {
-          state.currentRoom = rooms['kitchen']
+          state.currentRoom = rooms.kitchen
           state.message = state.currentRoom.description
         }
       } else {
@@ -69,7 +68,7 @@ function update (state, verb, noun) {
     }
   } else if (state.currentRoom.name === 'kitchen') {
     if (verb === 'move') {
-      state.currentRoom = rooms['hallway']
+      state.currentRoom = rooms.hallway
       state.message = state.currentRoom.description
     } else {
       state.message = 'Command not found'
