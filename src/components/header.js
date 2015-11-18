@@ -2,7 +2,7 @@ import element from 'vdom-element'
 import localize from 'vdux-local'
 import _ from 'lodash'
 
-const getStyles = () => {
+function getStyles () {
   return {
     header: {
       height: '64px',

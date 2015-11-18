@@ -17,6 +17,9 @@ const getStyles = () => {
     action: {
       marginBottom: '5px',
       fontStyle: 'italic'
+    },
+    paragraph: {
+      whiteSpace: 'pre-wrap'
     }
   }
 }
