@@ -23,11 +23,10 @@ const getStyles = () => {
 
 const merge = (base, ...args) => _.defaultsDeep(base, ...args)
 
-function render (props, childState) {
-  let styles = getStyles()
-  let {title, score, children} = props
+function render ({title, score, children, style}, childState) {
+  const styles = getStyles()
   return (
-    <div style={merge(props.style, styles.header)}>
+    <div style={merge(style, styles.header)}>
       <div style={styles.title}> {title && title} </div>
       <div style={styles.inner}>
         {children && children.map(child => <div>{child}</div>)}

@@ -13,7 +13,7 @@ function reducer (update, state, action) {
       const stateCopy = _.clone(state.user, true)
       const {verb, noun} = action.payload
       const user = update(stateCopy, verb, noun)
-      const prevAction = verb + ' ' + noun
+      const prevAction = `${verb} ${noun}`
       return {
         ...state,
         user: user,

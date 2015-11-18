@@ -54,8 +54,8 @@ function initialState () {
 }
 
 function render ({key, state}, childState) {
-  let styles = getStyles()
-  let {text, focus} = state
+  const styles = getStyles()
+  const {text, focus} = state
 
   return (
     <div style={styles.container}>

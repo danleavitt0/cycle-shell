@@ -21,13 +21,12 @@ const getStyles = () => {
   }
 }
 
-function render (props, childState) {
-  let styles = getStyles()
-  let {action} = props
+function render ({action, item}, childState) {
+  const styles = getStyles()
   return (
     <div style={styles.container}>
       {action && <div style={styles.action}> > {action} </div>}
-      <div style={styles.paragraph}>{props.item}</div>
+      <div style={styles.paragraph}>{item}</div>
     </div>
   )
 }
