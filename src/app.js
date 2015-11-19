@@ -13,10 +13,12 @@ const styles = {
     height: '100%'
   },
   feed: {
-    margin: '20px 30%'
+    margin: '20px 30%',
+    minWidth: '600px'
   },
   header: {
-    padding: '0 30%'
+    padding: '0 30%',
+    minWidth: '600px'
   }
 }
 
