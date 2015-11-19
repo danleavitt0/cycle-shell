@@ -18,7 +18,7 @@ var rooms = {
 }
 
 var initialState = {
-  title: 'Zork',
+  title: 'Daniel\'s Zork',
   message: 'Welcome to the game. Type commands into the input above to start.',
   currentRoom: rooms.cellar,
   score: 0
