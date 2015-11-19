@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import merge from './utils/merge'
 import element from 'vdom-element'
 import localize from 'vdux-local'
 import Header from './components/header'
@@ -22,24 +22,30 @@ const styles = {
 
 function render ({log, view, key, state, user}, childState) {
   const fixedLog = _.clone(log).reverse()
+  const {headerColor, headerTextColor} = user
   return (
     <div style={styles.app}>
       <Header
         key='header'
         title={user.title || 'Zork'}
         score={user.score || 0}
-        style={styles.header}>
+        style={merge({
+          backgroundColor: headerColor,
+          color: headerTextColor
+        }, styles.header)}>
         <FeedUpdate key='feed-update' {...childState('feed-update')} />
       </Header>
       <div>
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
             const message = view(step)
+            console.log('color', step.color)
             return (
               <Card
                 key={'item' + i}
                 action={step.action}
-                item={message} />
+                item={message}
+                color={step.color} />
             )
           })}
         </div>

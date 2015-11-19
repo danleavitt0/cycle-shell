@@ -1,6 +1,7 @@
 import element from 'vdom-element'
 import localize from 'vdux-local'
 import _ from 'lodash'
+import merge from '../utils/merge'
 
 function getStyles () {
   return {
@@ -21,10 +22,9 @@ function getStyles () {
   }
 }
 
-const merge = (base, ...args) => _.defaultsDeep(base, ...args)
-
 function render ({title, score, children, style}, childState) {
   const styles = getStyles()
+  console.log(style)
   return (
     <div style={merge(style, styles.header)}>
       <div style={styles.title}> {title && title} </div>

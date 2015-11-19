@@ -1,5 +1,6 @@
 import element from 'vdom-element'
 import localize from 'vdux-local'
+import merge from '../utils/merge'
 
 const getStyles = () => {
   return {
@@ -24,12 +25,12 @@ const getStyles = () => {
   }
 }
 
-function render ({action, item}, childState) {
+function render ({action, item, color}, childState) {
   const styles = getStyles()
   return (
     <div style={styles.container}>
       {action && <div style={styles.action}> > {action} </div>}
-      <div style={styles.paragraph}>{item}</div>
+      <div style={merge({color: color}, styles.paragraph)}>{item}</div>
     </div>
   )
 }

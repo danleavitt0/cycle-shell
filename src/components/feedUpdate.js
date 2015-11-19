@@ -1,7 +1,7 @@
 import element from 'vdom-element'
 import localize, {localAction} from 'vdux-local'
 import {submit} from '../actions'
-import _ from 'lodash'
+import merge from '../utils/merge'
 
 const ENTER_KEY = 13
 
@@ -44,8 +44,6 @@ const getStyles = () => {
     }
   }
 }
-
-const merge = (base, ...args) => _.defaultsDeep(base, ...args)
 
 function initialState () {
   return {

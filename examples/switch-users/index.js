@@ -4,6 +4,7 @@ var initialState = {
   name: 'Daniel',
   title: 'My Game',
   message: 'Welcome to the game. Type commands into the input above to start.',
+  headerColor: 'lightblue',
   score: 0
 }
 
