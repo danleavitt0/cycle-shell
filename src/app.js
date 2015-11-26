@@ -25,6 +25,7 @@ const styles = {
 function render ({log, view, key, state, user}, childState) {
   const fixedLog = _.clone(log).reverse()
   const {headerColor, headerTextColor} = user
+  
   return (
     <div style={styles.app}>
       <Header
@@ -41,7 +42,6 @@ function render ({log, view, key, state, user}, childState) {
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
             const message = view(step)
-            console.log('color', step.color)
             return (
               <Card
                 key={'item' + i}

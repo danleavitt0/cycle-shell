@@ -77,5 +77,11 @@ function update (state, verb, noun) {
   return state
 }
 
+function view (state) {
+  return (
+    <div>{state.currentRoom.name}</div>
+  )
+}
+
 var game = Zork(initialState, update)
 game()

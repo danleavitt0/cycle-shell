@@ -24,7 +24,7 @@ function getStyles () {
 
 function render ({title, score, children, style}, childState) {
   const styles = getStyles()
-  console.log(style)
+
   return (
     <div style={merge(style, styles.header)}>
       <div style={styles.title}> {title && title} </div>
