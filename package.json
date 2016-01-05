@@ -1,6 +1,6 @@
 {
   "name": "simple-zork",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
@@ -44,7 +44,7 @@
     "type": "git",
     "url": "git+https://github.com/danleavitt0/simple-zork.git"
   },
-  "author": "",
+  "author": "danleavitt0",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/danleavitt0/simple-zork/issues"

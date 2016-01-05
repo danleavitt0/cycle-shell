@@ -4,6 +4,7 @@ import localize from 'vdux-local'
 import Header from './components/header'
 import Card from './components/card'
 import FeedUpdate from './components/feedUpdate'
+import _ from 'lodash'
 
 const styles = {
   app: {
@@ -13,11 +14,8 @@ const styles = {
     height: '100%'
   },
   feed: {
-    margin: '20px 30%',
-    minWidth: '600px'
-  },
-  header: {
-    padding: '0 30%',
+    margin: '20px auto',
+    width: '40%',
     minWidth: '600px'
   }
 }
@@ -31,6 +29,7 @@ function render ({log, view, key, state, user}, childState) {
         key='header'
         title={user.title || 'Zork'}
         score={user.score || 0}
+        innerWidth='40%'
         style={merge({
           backgroundColor: headerColor,
           color: headerTextColor
@@ -41,7 +40,6 @@ function render ({log, view, key, state, user}, childState) {
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
             const message = view(step)
-            console.log('color', step.color)
             return (
               <Card
                 key={'item' + i}

@@ -16,22 +16,30 @@ function getStyles () {
     title: {
       fontSize: '20px'
     },
-    inner: {
+    children: {
       flex: 1
+    },
+    inner: {
+      width: '80%',
+      margin: '0 auto',
+      display: 'flex',
+      alignItems: 'center',
+      minWidth: '600px'
     }
   }
 }
 
-function render ({title, score, children, style}, childState) {
+function render ({title, score, children, style, innerWidth}, childState) {
   const styles = getStyles()
-  console.log(style)
   return (
     <div style={merge(style, styles.header)}>
-      <div style={styles.title}> {title && title} </div>
-      <div style={styles.inner}>
-        {children && children.map(child => <div>{child}</div>)}
+      <div style={merge({width: innerWidth}, styles.inner)}>
+        <div style={styles.title}> {title && title} </div>
+        <div style={styles.children}>
+          {children && children.map(child => <div>{child}</div>)}
+        </div>
+        <div style={styles.score}> score: {score} </div>
       </div>
-      <div style={styles.score}> score: {score} </div>
     </div>
   )
 }

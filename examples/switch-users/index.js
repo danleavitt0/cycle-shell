@@ -1,11 +1,14 @@
-var Zork = require('../../src').createGame
+var Zork = require('../../src')
+Zork(initialState(), update)
 
-var initialState = {
-  name: 'Daniel',
-  title: 'My Game',
-  message: 'Welcome to the game. Type commands into the input above to start.',
-  headerColor: 'lightblue',
-  score: 0
+function initialState () {
+  return {
+    name: 'Daniel',
+    title: 'My Game',
+    message: 'Welcome to the game. Type commands into the input above to start.',
+    headerColor: 'lightblue',
+    score: 0
+  }
 }
 
 function update (state, verb, noun) {
@@ -21,6 +24,3 @@ function update (state, verb, noun) {
   }
   return state
 }
-
-var game = Zork(initialState, update)
-game()

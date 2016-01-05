@@ -1,4 +1,5 @@
-var Zork = require('../../src').createGame
+var Zork = require('../../src')
+Zork(initialState(), update)
 
 var rooms = {
   cellar: {
@@ -17,11 +18,13 @@ var rooms = {
   }
 }
 
-var initialState = {
-  title: 'Daniel\'s Zork',
-  message: 'Welcome to the game. Type commands into the input above to start.',
-  currentRoom: rooms.cellar,
-  score: 0
+function initialState () {
+  return {
+    title: 'Daniel\'s Zork',
+    message: 'Welcome to the game. Type commands into the input above to start.',
+    currentRoom: rooms.cellar,
+    score: 0
+  }
 }
 
 function update (state, verb, noun) {
@@ -76,6 +79,3 @@ function update (state, verb, noun) {
   }
   return state
 }
-
-var game = Zork(initialState, update)
-game()

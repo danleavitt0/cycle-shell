@@ -1,4 +1,5 @@
-var Zork = require('../../src').createGame
+var Zork = require('../../src')
+Zork(initialState(), update)
 
 var questions = {
   one: {
@@ -16,14 +17,16 @@ var questions = {
   }
 }
 
-var initialState = {
-  name: 'Daniel',
-  title: 'Quiz Game',
-  currentQuestion: {completed: true, next: 'one'},
-  message: `Type next to get started.`,
-  headerColor: 'lightblue',
-  headerTextColor: 'white',
-  score: 0
+function initialState () {
+  return {
+    name: 'Daniel',
+    title: 'Quiz Game',
+    currentQuestion: {completed: true, next: 'one'},
+    message: `Type next to get started.`,
+    headerColor: 'lightblue',
+    headerTextColor: 'white',
+    score: 0
+  }
 }
 
 function update (state, verb, noun) {
@@ -46,6 +49,3 @@ function update (state, verb, noun) {
   }
   return state
 }
-
-var game = Zork(initialState, update)
-game()
