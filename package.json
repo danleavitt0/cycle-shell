@@ -14,7 +14,7 @@
     "redux-logger": "^2.0.4",
     "redux-multi": "^0.1.10",
     "vdom-element": "^0.2.3",
-    "vdux": "^0.1.8",
+    "vdux": "0.1.8",
     "vdux-local": "^0.2.0",
     "virtual-component": "^0.2.5",
     "webpack": "^1.12.3",
