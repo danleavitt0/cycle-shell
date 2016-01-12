@@ -23,6 +23,7 @@ function render ({props}) {
   const {user, log, view} = props
   const fixedLog = _.clone(log).reverse()
   const {headerColor, headerTextColor} = user
+  
   return (
     <div style={styles.app}>
       <Header

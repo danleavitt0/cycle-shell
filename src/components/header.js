@@ -30,6 +30,7 @@ function getStyles () {
 function render ({props, children}) {
   const {title, score, style, innerWidth} = props
   const styles = getStyles()
+
   return (
     <div style={merge(style, styles.header)}>
       <div style={merge({width: innerWidth}, styles.inner)}>
