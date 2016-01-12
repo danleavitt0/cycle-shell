@@ -1,6 +1,5 @@
 import merge from './utils/merge'
-import element from 'vdom-element'
-import localize from 'vdux-local'
+import element from 'virtex-element'
 import Header from './components/header'
 import Card from './components/card'
 import FeedUpdate from './components/feedUpdate'
@@ -20,7 +19,8 @@ const styles = {
   }
 }
 
-function render ({log, view, key, state, user}, childState) {
+function render ({props}) {
+  const {user, log, view} = props
   const fixedLog = _.clone(log).reverse()
   const {headerColor, headerTextColor} = user
   return (
@@ -34,7 +34,7 @@ function render ({log, view, key, state, user}, childState) {
           backgroundColor: headerColor,
           color: headerTextColor
         }, styles.header)}>
-        <FeedUpdate key='feed-update' {...childState('feed-update')} />
+        <FeedUpdate key='feed-update' />
       </Header>
       <div>
         <div style={styles.feed}>
@@ -54,6 +54,6 @@ function render ({log, view, key, state, user}, childState) {
   )
 }
 
-export default localize({
+export default {
   render
-})
+}

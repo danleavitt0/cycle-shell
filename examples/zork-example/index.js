@@ -1,20 +1,22 @@
 var Zork = require('../../src')
 Zork(initialState(), update)
 
-var rooms = {
-  cellar: {
-    name: 'cellar',
-    description: 'You are in a dark cellar. The only thing you can see is a light switch on the wall next to you.',
-    completed: false
-  },
-  kitchen: {
-    name: 'kitchen',
-    description: 'You are in a kitchen. In the middle of the table is a half prepared meal. The refrigerator is open and there appears to be no power in the house. There is a hallway to the east.',
-    completed: true
-  },
-  hallway: {
-    name: 'hallway',
-    description: 'You move in to the hallway. There is at the end of the hallway that leads outside.'
+function rooms () {
+  return {
+    cellar: {
+      name: 'cellar',
+      description: 'You are in a dark cellar. The only thing you can see is a light switch on the wall next to you.',
+      completed: false
+    },
+    kitchen: {
+      name: 'kitchen',
+      description: 'You are in a kitchen. In the middle of the table is a half prepared meal. The refrigerator is open and there appears to be no power in the house. There is a hallway to the east.',
+      completed: true
+    },
+    hallway: {
+      name: 'hallway',
+      description: 'You move in to the hallway. There is at the end of the hallway that leads outside.'
+    }
   }
 }
 
@@ -22,7 +24,7 @@ function initialState () {
   return {
     title: 'Daniel\'s Zork',
     message: 'Welcome to the game. Type commands into the input above to start.',
-    currentRoom: rooms.cellar,
+    currentRoom: rooms().cellar,
     score: 0
   }
 }

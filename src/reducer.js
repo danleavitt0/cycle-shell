@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import {SUBMIT, INITIALIZE} from './actions'
-import ephemeral from 'redux-ephemeral'
 
 function reducer (update, state, action) {
   switch (action.type) {
@@ -20,7 +19,7 @@ function reducer (update, state, action) {
         log: [...state.log, {...user, action: prevAction}]
       }
   }
-  return ephemeral(state, action)
+  return state
 }
 
 export default update => reducer.bind(this, update)

@@ -7,12 +7,16 @@ function initializeApp () {
   }
 }
 
-function submit (v, n) {
-  return {
-    type: SUBMIT,
-    payload: {
-      verb: v,
-      noun: n
+function submit () {
+  return function (e) {
+    let value = e.target.value
+    let split = value.split(' ')
+    return {
+      type: SUBMIT,
+      payload: {
+        verb: split[0].trim(),
+        noun: split[1] ? split[1].trim() : ''
+      }
     }
   }
 }
