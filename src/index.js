@@ -4,7 +4,17 @@ import {initializeApp} from './actions'
 import vdux from '../vdux'
 import App from './app'
 
-const defaultView = state => state.message
+const defaultView = state => {
+  if (typeof (state.message) === 'object') {
+    let arr = []
+    for (let key in state.message) {
+      arr.push(`${key}: ${state.message[key]}`)
+    }
+    return arr.join('\n')
+  } else {
+    return state.message
+  }
+}
 
 module.exports = (initialState, userUpdate = () => {}, view = defaultView) => {
   const store = createStore({log: [], user: initialState}, userUpdate)

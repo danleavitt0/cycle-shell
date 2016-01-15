@@ -23,7 +23,10 @@ function rooms () {
 function initialState () {
   return {
     title: 'Daniel\'s Zork',
-    message: 'Welcome to the game. Type commands into the input above to start.',
+    message: {
+      name: 'Daniel',
+      moreStuff: 'This is more stuff'
+    },
     currentRoom: rooms().cellar,
     score: 0
   }
