@@ -30,7 +30,6 @@ module.exports = (userUpdate = () => {}, initialState = initState, view = defaul
     initialState: {log: [], user: initialState},
     app: state => <App log={state.log} view={view} user={state.user} {...state} />,
     middleware: [
-      logger(),
       multi
     ]
   })
