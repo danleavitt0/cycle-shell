@@ -1,18 +1,20 @@
 const SUBMIT = 'SUBMIT'
 const INITIALIZE = 'INITIALIZE'
 
-function initializeApp () {
+function initializeApp (view) {
   return {
-    type: 'INITIALIZE'
+    type: 'INITIALIZE',
+    payload: view
   }
 }
 
-function submit (v, n) {
-  return {
-    type: SUBMIT,
-    payload: {
-      verb: v,
-      noun: n
+function submit () {
+  return function (e) {
+    let value = e.target.value
+    let split = value.match(/(?:[^\s"]+|"[^"]*")+/g).map((item) => isNaN(item) ? item : parseInt(item))
+    return {
+      type: SUBMIT,
+      payload: split
     }
   }
 }

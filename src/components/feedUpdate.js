@@ -1,16 +1,16 @@
-import element from 'vdom-element'
-import localize, {localAction} from 'vdux-local'
+import element from 'virtex-element'
+import createAction from '@f/create-action'
 import {submit} from '../actions'
 import merge from '../utils/merge'
-
-const ENTER_KEY = 13
 
 const SET_TEXT = 'SET_TEXT'
 const SET_FOCUS = 'SET_FOCUS'
 const REMOVE_FOCUS = 'REMOVE_FOCUS'
-const setText = localAction(SET_TEXT)
-const setFocus = localAction(SET_FOCUS)
-const removeFocus = localAction(REMOVE_FOCUS)
+const CLEAR_TEXT = 'CLEAR_TEXT'
+const setText = createAction(SET_TEXT, e => e.target.value)
+const setFocus = createAction(SET_FOCUS)
+const clearText = createAction(CLEAR_TEXT)
+const removeFocus = createAction(REMOVE_FOCUS)
 
 const getStyles = () => {
   return {
@@ -27,7 +27,7 @@ const getStyles = () => {
       borderRadius: '10px',
       border: '1px solid rgba(51,51,51,0.2)',
       textIndent: '25px',
-      transition: 'all .3s ease-in-out',
+      transition: 'border .3s ease-in-out',
       outline: 'none'
     },
     caret: {
@@ -52,9 +52,11 @@ function initialState () {
   }
 }
 
-function render ({key, state}, childState) {
-  const styles = getStyles()
+function render ({props, state, local}) {
   const {text, focus} = state
+  const styles = getStyles()
+  const submitText = [submit(text), local(clearText)]
+  console.log(submitText)
 
   return (
     <div style={styles.container}>
@@ -64,28 +66,12 @@ function render ({key, state}, childState) {
         style={focus ? merge(styles.focusedInput, styles.input) : styles.input}
         type='text'
         value={text}
-        ev-focus={handleFocus}
-        ev-blur={handleBlur}
-        ev-keyup={handleSubmit} />
+        onFocus={local(setFocus)}
+        onBlur={local(removeFocus)}
+        onInput={local(setText)}
+        onKeyUp={{enter: submitText}} />
     </div>
   )
-
-  function handleFocus () {
-    return setFocus(key)
-  }
-
-  function handleBlur () {
-    return removeFocus(key)
-  }
-
-  function handleSubmit (e) {
-    const text = e.target.value
-    const parts = text.split(' ')
-    const noun = parts[1] ? parts[1] : ''
-    return text && e.which === ENTER_KEY
-      ? [setText(key, ''), submit(parts[0], noun)]
-      : setText(key, text)
-  }
 }
 
 function reducer (state, action) {
@@ -105,12 +91,17 @@ function reducer (state, action) {
         ...state,
         focus: false
       }
+    case CLEAR_TEXT:
+      return {
+        ...state,
+        text: ''
+      }
   }
   return state
 }
 
-export default localize({
+export default {
   initialState,
-  reducer,
-  render
-})
+  render,
+  reducer
+}

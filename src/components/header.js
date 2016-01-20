@@ -1,6 +1,4 @@
-import element from 'vdom-element'
-import localize from 'vdux-local'
-import _ from 'lodash'
+import element from 'virtex-element'
 import merge from '../utils/merge'
 
 function getStyles () {
@@ -16,26 +14,41 @@ function getStyles () {
     title: {
       fontSize: '20px'
     },
-    inner: {
+    children: {
       flex: 1
+    },
+    inner: {
+      width: '80%',
+      margin: '0 auto',
+      display: 'flex',
+      alignItems: 'center',
+      minWidth: '600px'
     }
   }
 }
 
-function render ({title, score, children, style}, childState) {
+function render ({props, children}) {
+  const {title, score, style, innerWidth} = props
   const styles = getStyles()
 
   return (
     <div style={merge(style, styles.header)}>
-      <div style={styles.title}> {title && title} </div>
-      <div style={styles.inner}>
-        {children && children.map(child => <div>{child}</div>)}
+      <div style={merge({width: innerWidth}, styles.inner)}>
+        <div style={styles.title}> {title && title} </div>
+        <div style={styles.children}>
+          {children && children.map(child => <div>{child}</div>)}
+        </div>
+        <div style={styles.score}> score: {score} </div>
       </div>
-      <div style={styles.score}> score: {score} </div>
     </div>
   )
 }
 
-export default localize({
-  render
-})
+const initialState = () => {}
+const reducer = state => state
+
+export default {
+  initialState,
+  render,
+  reducer
+}

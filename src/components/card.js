@@ -1,5 +1,4 @@
-import element from 'vdom-element'
-import localize from 'vdux-local'
+import element from 'virtex-element'
 import merge from '../utils/merge'
 
 const getStyles = () => {
@@ -25,7 +24,8 @@ const getStyles = () => {
   }
 }
 
-function render ({action, item, color}, childState) {
+function render ({props}) {
+  const {action, item, color} = props
   const styles = getStyles()
   return (
     <div style={styles.container}>
@@ -35,6 +35,6 @@ function render ({action, item, color}, childState) {
   )
 }
 
-export default localize({
+export default {
   render
-})
+}
