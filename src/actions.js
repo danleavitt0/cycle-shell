@@ -11,7 +11,9 @@ function initializeApp (view) {
 function submit () {
   return function (e) {
     let value = e.target.value
-    let split = value.match(/(?:[^\s"]+|"[^"]*")+/g).map((item) => isNaN(item) ? item : parseInt(item))
+    let split = value.match(/(?:[^\s"|^\s']+|["|'][^"|^']*["|'])+/g).map((item) => 
+      isNaN(item) ? item : parseInt(item)
+    )
     return {
       type: SUBMIT,
       payload: split
