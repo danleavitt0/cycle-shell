@@ -27,7 +27,7 @@ function render ({props}) {
   return (
     <div style={styles.app}>
       <Header
-        title={user.title || 'Zork'}
+        title={user.title || 'Cycle'}
         score={user.score || 0}
         innerWidth='40%'
         style={merge({
