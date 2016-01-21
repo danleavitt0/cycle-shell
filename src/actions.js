@@ -1,10 +1,9 @@
 const SUBMIT = 'SUBMIT'
 const INITIALIZE = 'INITIALIZE'
 
-function initializeApp (view) {
+function initializeApp () {
   return {
-    type: 'INITIALIZE',
-    payload: view
+    type: 'INITIALIZE'
   }
 }
 

@@ -56,7 +56,6 @@ function render ({props, state, local}) {
   const {text, focus} = state
   const styles = getStyles()
   const submitText = [submit(text), local(clearText)]
-  console.log(submitText)
 
   return (
     <div style={styles.container}>

@@ -1,11 +1,13 @@
 {
-
   "name": "cycle-shell",
   "version": "0.1.1",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
     "@f/create-action": "^1.1.1",
+    "@f/equal-obj": "^1.2.1",
+    "@f/reduce": "^1.0.0",
+    "@f/reduce-key": "^1.2.0",
     "babel-plugin-transform-react-jsx": "^6.4.0",
     "delegant": "^0.1.5",
     "es6-promise": "^3.0.2",

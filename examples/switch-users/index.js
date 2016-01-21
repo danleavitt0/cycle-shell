@@ -1,6 +1,9 @@
 var Zork = require('../../src')
-Zork(update)
+Zork(main)
 
-function update (state, num1, op, num2) {
-  return state
+function main (message) {
+  return [
+    message,
+    'hello'
+  ]
 }

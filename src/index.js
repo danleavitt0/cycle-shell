@@ -4,33 +4,27 @@ import {initializeApp} from './actions'
 import reducer from './reducer'
 import vdux from 'vdux/dom'
 import App from './app'
+import reduce from '@f/reduce'
 import logger from 'redux-logger'
 import multi from 'redux-multi'
 
-const defaultView = state => {
-  if (typeof (state.output) === 'object') {
-    let arr = []
-    for (let key in state.output) {
-      arr.push(`${key}: ${state.output[key]}`)
-    }
-    return arr.join('\n')
+const defaultView = output => {
+  if (typeof (output) === 'object') {
+    return reduce((arr, item, key) => {
+      arr.push(`${key}: ${item}`)
+      return arr
+    }, [], output).join('\n')
   } else {
-    return state.output
+    return output
   }
 }
 
-const initState = {
-  headerColor: 'lightblue',
-  headerTextColor: '#333'
-}
-
-module.exports = (userUpdate = () => {}, initialState = initState, view = defaultView) => {
+module.exports = (userUpdate = () => {}, initialState = {}, view = defaultView) => {
   vdux({
     reducer: reducer(userUpdate),
     initialState: {log: [], user: initialState},
     app: state => <App log={state.log} view={view} user={state.user} {...state} />,
     middleware: [
-      logger(),
       multi
     ]
   })
