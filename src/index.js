@@ -1,24 +1,37 @@
 import createStore from './store'
 import element from 'virtex-element'
 import {initializeApp} from './actions'
-import vdux from '../vdux'
+import reducer from './reducer'
+import vdux from 'vdux/dom'
 import App from './app'
+import logger from 'redux-logger'
+import multi from 'redux-multi'
 
 const defaultView = state => {
-  if (typeof (state.message) === 'object') {
+  if (typeof (state.output) === 'object') {
     let arr = []
-    for (let key in state.message) {
-      arr.push(`${key}: ${state.message[key]}`)
+    for (let key in state.output) {
+      arr.push(`${key}: ${state.output[key]}`)
     }
     return arr.join('\n')
   } else {
-    return state.message
+    return state.output
   }
 }
 
-module.exports = (initialState, userUpdate = () => {}, view = defaultView) => {
-  const store = createStore({log: [], user: initialState}, userUpdate)
+const initState = {
+  headerColor: 'lightblue',
+  headerTextColor: '#333'
+}
 
-  store.dispatch(initializeApp())
-  vdux(store, state => <App key='app' state={state.app} view={view} {...state} />, document.body)
+module.exports = (userUpdate = () => {}, initialState = initState, view = defaultView) => {
+  vdux({
+    reducer: reducer(userUpdate),
+    initialState: {log: [], user: initialState},
+    app: state => <App log={state.log} view={view} user={state.user} {...state} />,
+    middleware: [
+      logger(),
+      multi
+    ]
+  })
 }

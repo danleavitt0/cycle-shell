@@ -27,7 +27,7 @@ const getStyles = () => {
       borderRadius: '10px',
       border: '1px solid rgba(51,51,51,0.2)',
       textIndent: '25px',
-      transition: 'all .3s ease-in-out',
+      transition: 'border .3s ease-in-out',
       outline: 'none'
     },
     caret: {
@@ -37,7 +37,7 @@ const getStyles = () => {
       left: '25px'
     },
     focusedInput: {
-      border: '2px solid rgba(51,51,51,0.7)'
+      border: '1px solid rgba(51,51,51,0.7)'
     },
     focusedCaret: {
       color: 'rgba(51,51,51,0.7)'
@@ -56,6 +56,7 @@ function render ({props, state, local}) {
   const {text, focus} = state
   const styles = getStyles()
   const submitText = [submit(text), local(clearText)]
+  console.log(submitText)
 
   return (
     <div style={styles.container}>
@@ -68,7 +69,7 @@ function render ({props, state, local}) {
         onFocus={local(setFocus)}
         onBlur={local(removeFocus)}
         onInput={local(setText)}
-        onKeyUp={{enter: text && submitText}} />
+        onKeyUp={{enter: submitText}} />
     </div>
   )
 }

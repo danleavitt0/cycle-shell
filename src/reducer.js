@@ -6,13 +6,13 @@ function reducer (update, state, action) {
     case INITIALIZE:
       return {
         ...state,
+        view: action.payload,
         log: [...state.log, state.user]
       }
     case SUBMIT:
       const stateCopy = _.clone(state.user, true)
-      const {verb, noun} = action.payload
-      const user = update(stateCopy, verb, noun)
-      const prevAction = `${verb} ${noun}`
+      const user = update(stateCopy, ...action.payload)
+      const prevAction = action.payload.join(' ')
       return {
         ...state,
         user: user,

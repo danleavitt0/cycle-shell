@@ -2,8 +2,8 @@ import merge from './utils/merge'
 import element from 'virtex-element'
 import Header from './components/header'
 import Card from './components/card'
-import FeedUpdate from './components/feedUpdate'
 import _ from 'lodash'
+import FeedUpdate from './components/feedUpdate'
 
 const styles = {
   app: {
@@ -20,14 +20,13 @@ const styles = {
 }
 
 function render ({props}) {
-  const {user, log, view} = props
+  const {user, view, log} = props
   const fixedLog = _.clone(log).reverse()
   const {headerColor, headerTextColor} = user
-  
+
   return (
     <div style={styles.app}>
       <Header
-        key='header'
         title={user.title || 'Zork'}
         score={user.score || 0}
         innerWidth='40%'
@@ -35,19 +34,21 @@ function render ({props}) {
           backgroundColor: headerColor,
           color: headerTextColor
         }, styles.header)}>
-        <FeedUpdate key='feed-update' />
+        <FeedUpdate/>
       </Header>
       <div>
         <div style={styles.feed}>
           {fixedLog.map((step, i) => {
-            const message = view(step)
-            return (
-              <Card
-                key={'item' + i}
-                action={step.action}
-                item={message}
-                color={step.color} />
-            )
+            const output = view(step)
+            if (output) {
+              return (
+                <Card
+                  key={'item' + i}
+                  action={step.action}
+                  item={output}
+                  color={step.color} />
+              )
+            }
           })}
         </div>
       </div>
@@ -55,6 +56,4 @@ function render ({props}) {
   )
 }
 
-export default {
-  render
-}
+export default render

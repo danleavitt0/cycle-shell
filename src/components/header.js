@@ -44,6 +44,11 @@ function render ({props, children}) {
   )
 }
 
+const initialState = () => {}
+const reducer = state => state
+
 export default {
-  render
+  initialState,
+  render,
+  reducer
 }

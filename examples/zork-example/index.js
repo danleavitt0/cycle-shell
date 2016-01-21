@@ -1,5 +1,5 @@
 var Zork = require('../../src')
-Zork(initialState(), update)
+Zork(update)
 
 function rooms () {
   return {
@@ -23,7 +23,7 @@ function rooms () {
 function initialState () {
   return {
     title: 'Daniel\'s Zork',
-    message: {
+    output: {
       name: 'Daniel',
       moreStuff: 'This is more stuff'
     },
@@ -33,53 +33,54 @@ function initialState () {
 }
 
 function update (state, verb, noun) {
+  console.log(state, verb)
   if (verb === 'look') {
-    state.message = state.currentRoom.description
+    state.output = state.currentRoom.description
     return state
   }
   if (state.currentRoom.name === 'cellar') {
     if (verb === 'toggle') {
       if (noun === 'switch') {
         state.currentRoom.description = 'You are in the cellar. With the lights turned on you can see a closed door on the north side of the room. In the middle of the room is a large rug.'
-        state.message = 'With the lights turned on you can see a closed door on the north side of the room. In the middle of the room is a large rug.'
+        state.output = 'With the lights turned on you can see a closed door on the north side of the room. In the middle of the room is a large rug.'
       } else {
-        state.message = 'I can not toggle that.'
+        state.output = 'I can not toggle that.'
       }
     } else if (verb === 'open') {
       if (noun === 'door') {
         if (state.currentRoom.completed === false) {
-          state.message = 'The door is locked. You need to find a key before moving on.'
+          state.output = 'The door is locked. You need to find a key before moving on.'
         } else {
           state.currentRoom = rooms.kitchen
-          state.message = state.currentRoom.description
+          state.output = state.currentRoom.description
         }
       } else {
-        state.message = 'I can\'t open that.'
+        state.output = 'I can\'t open that.'
       }
     } else if (verb === 'move') {
       if (noun === 'rug') {
         state.currentRoom.description = 'You are in the cellar. With the lights turned on you can see a closed door on the north side of the room. With the rug moved, you can see a key on the floor.'
-        state.message = 'After sliding the rug out of the way you see a key on the ground. It looks like it could be used to open the door.'
+        state.output = 'After sliding the rug out of the way you see a key on the ground. It looks like it could be used to open the door.'
       } else {
-        state.message = 'I can\'t move that.'
+        state.output = 'I can\'t move that.'
       }
     } else if (verb === 'take') {
       if (noun === 'key') {
         state.currentRoom.completed = true
         state.currentRoom.description = 'You are in the cellar. With the lights turned on you can see a closed door on the north side of the room.'
-        state.message = 'You have picked up the key.'
+        state.output = 'You have picked up the key.'
       } else {
-        state.message = 'I can\'t pick that up.'
+        state.output = 'I can\'t pick that up.'
       }
     } else {
-      state.message = 'Command not found'
+      state.output = 'Command not found'
     }
   } else if (state.currentRoom.name === 'kitchen') {
     if (verb === 'move') {
       state.currentRoom = rooms.hallway
-      state.message = state.currentRoom.description
+      state.output = state.currentRoom.description
     } else {
-      state.message = 'Command not found'
+      state.output = 'Command not found'
     }
   }
   return state
