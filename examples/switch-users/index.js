@@ -1,9 +1,5 @@
-var Zork = require('../../src')
-Zork(main)
+require('../../src')(main)
 
-function main (message) {
-  return [
-    message,
-    'hello'
-  ]
+function main (action, name) {
+  return action
 }

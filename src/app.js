@@ -26,7 +26,7 @@ function onCreate ({props}) {
 
 function render ({props}) {
   const {user, view, log} = props
-  const fixedLog = _.clone(log).reverse()
+  const fixedLog = [...log].reverse()
   const {headerColor, headerTextColor} = user
 
   return (
