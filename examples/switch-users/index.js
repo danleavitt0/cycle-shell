@@ -1,5 +1,5 @@
 require('../../src')(main)
 
-function main (action, name) {
-  return action
+function main (...args) {
+  return args
 }
