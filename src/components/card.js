@@ -30,7 +30,9 @@ function render ({props}) {
   return (
     <div style={styles.container}>
       {action && <div style={styles.action}> > {action} </div>}
-      <div style={merge({color: color}, styles.paragraph)}>{item}</div>
+      <div style={styles.paragraph}>
+        {item}
+      </div>
     </div>
   )
 }

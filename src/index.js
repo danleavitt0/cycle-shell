@@ -9,17 +9,18 @@ import logger from 'redux-logger'
 import multi from 'redux-multi'
 
 const defaultView = output => {
-  if (typeof (output) === 'object') {
+  console.log(output)
+  if (typeof (output) !== 'object' || output.props) {
+    return output
+  } else {
     return reduce((arr, item, key) => {
       arr.push(`${key}: ${item}`)
       return arr
     }, [], output).join('\n')
-  } else {
-    return output
   }
 }
 
-module.exports = (userUpdate = () => {}, initialState = {}, view = defaultView) => {
+module.exports = (userUpdate = () => {}, view = defaultView, initialState = {}) => {
   vdux({
     reducer: reducer(userUpdate),
     initialState: {log: [], user: initialState},
