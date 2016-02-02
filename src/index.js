@@ -1,15 +1,11 @@
-import createStore from './store'
 import element from 'virtex-element'
-import {initializeApp} from './actions'
 import reducer from './reducer'
 import vdux from 'vdux/dom'
 import App from './app'
 import reduce from '@f/reduce'
-import logger from 'redux-logger'
 import multi from 'redux-multi'
 
 const defaultView = output => {
-  console.log(output)
   if (typeof (output) !== 'object' || output.props) {
     return output
   } else {

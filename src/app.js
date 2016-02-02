@@ -4,6 +4,7 @@ import Header from './components/header'
 import Card from './components/card'
 import _ from 'lodash'
 import FeedUpdate from './components/feedUpdate'
+import Log from './components/log'
 import {initializeApp} from './actions'
 
 const styles = {
@@ -26,7 +27,6 @@ function onCreate ({props}) {
 
 function render ({props}) {
   const {user, view, log} = props
-  const fixedLog = [...log].reverse()
   const {headerColor, headerTextColor} = user
 
   return (
@@ -41,22 +41,7 @@ function render ({props}) {
         }, styles.header)}>
         <FeedUpdate/>
       </Header>
-      <div>
-        <div style={styles.feed}>
-          {fixedLog.map((step, i) => {
-            let {output} = step
-            if (output) {
-              return (
-                <Card
-                  key={'item' + i}
-                  action={step.action}
-                  item={view(output)}
-                  color={step.color} />
-              )
-            }
-          })}
-        </div>
-      </div>
+      <Log data={log} view={view}/>
     </div>
   )
 }

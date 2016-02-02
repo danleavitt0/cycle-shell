@@ -4,7 +4,8 @@ var hx = require('hypervdux')
 const styles = {
   container: {
     color: 'lightblue',
-    backgroundColor: 'lightyellow'
+    backgroundColor: 'lightyellow',
+    fontSize: 18
   }
 }
 
