@@ -16,10 +16,11 @@ const defaultView = output => {
   }
 }
 
-module.exports = (userUpdate = () => {}, view = defaultView, initialState = {}) => {
+module.exports = (userUpdate = () => {}, initialState = {}, view = defaultView) => {
+  console.log(initialState)
   vdux({
     reducer: reducer(userUpdate),
-    initialState: {log: [], user: initialState},
+    initialState: {log: [initialState.length > 0 && {output: initialState}], user: initialState},
     app: state => <App log={state.log} view={view} user={state.user} {...state} />,
     middleware: [
       multi
