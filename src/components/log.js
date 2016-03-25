@@ -1,4 +1,4 @@
-import element from 'virtex-element'
+import element from 'vdux/element'
 import Card from './card'
 
 const styles = {

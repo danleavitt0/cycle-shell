@@ -1,9 +1,10 @@
-import element from 'virtex-element'
+import element from 'vdux/element'
 import reducer from './reducer'
 import vdux from 'vdux/dom'
 import App from './app'
 import reduce from '@f/reduce'
 import multi from 'redux-multi'
+import ready from 'domready'
 
 const defaultView = output => {
   if (typeof (output) !== 'object' || output.props) {
@@ -17,12 +18,15 @@ const defaultView = output => {
 }
 
 module.exports = (userUpdate = () => {}, initialState = {}, view = defaultView) => {
-  vdux({
+  var initState = {log: [typeof (initialState) === 'string' && {output: initialState}], user: initialState}
+  const {subscribe, render} = vdux({
     reducer: reducer(userUpdate),
-    initialState: {log: [typeof (initialState) === 'string' && {output: initialState}], user: initialState},
-    app: state => <App log={state.log} view={view} user={state.user} {...state} />,
-    middleware: [
-      multi
-    ]
+    initialState: initState,
+    middleware: [multi]
+  })
+  ready(() => {
+    subscribe(state => {
+      render(<App log={state.log} view={view} user={state.user} {...state} />)
+    })
   })
 }

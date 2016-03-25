@@ -1,4 +1,4 @@
-import element from 'virtex-element'
+import element from 'vdux/element'
 import createAction from '@f/create-action'
 import {submit} from '../actions'
 import merge from '../utils/merge'

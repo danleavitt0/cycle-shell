@@ -1,5 +1,5 @@
 import merge from './utils/merge'
-import element from 'virtex-element'
+import element from 'vdux/element'
 import Header from './components/header'
 import Card from './components/card'
 import _ from 'lodash'

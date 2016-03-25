@@ -1,4 +1,4 @@
-import element from 'virtex-element'
+import element from 'vdux/element'
 import merge from '../utils/merge'
 
 const getStyles = () => {
