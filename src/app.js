@@ -4,6 +4,8 @@ import Header from './components/header'
 import Card from './components/card'
 import _ from 'lodash'
 import FeedUpdate from './components/feedUpdate'
+import Log from './components/log'
+import {initializeApp} from './actions'
 
 const styles = {
   app: {
@@ -19,16 +21,18 @@ const styles = {
   }
 }
 
+function onCreate ({props}) {
+  return initializeApp()
+}
+
 function render ({props}) {
   const {user, view, log} = props
-  const fixedLog = _.clone(log).reverse()
   const {headerColor, headerTextColor} = user
 
   return (
     <div style={styles.app}>
       <Header
         title={user.title || 'Cycle'}
-        score={user.score || 0}
         innerWidth='40%'
         style={merge({
           backgroundColor: headerColor,
@@ -36,24 +40,12 @@ function render ({props}) {
         }, styles.header)}>
         <FeedUpdate/>
       </Header>
-      <div>
-        <div style={styles.feed}>
-          {fixedLog.map((step, i) => {
-            const output = view(step)
-            if (output) {
-              return (
-                <Card
-                  key={'item' + i}
-                  action={step.action}
-                  item={output}
-                  color={step.color} />
-              )
-            }
-          })}
-        </div>
-      </div>
+      <Log data={log} view={view}/>
     </div>
   )
 }
 
-export default render
+export default {
+  onCreate,
+  render
+}

@@ -1,13 +1,18 @@
 {
   "name": "cycle-shell",
-  "version": "0.1.6",
+  "version": "0.3.5",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
     "@f/create-action": "^1.1.1",
+    "@f/equal-obj": "^1.2.1",
+    "@f/reduce": "^1.0.0",
+    "@f/reduce-key": "^1.2.0",
     "babel-plugin-transform-react-jsx": "^6.4.0",
     "delegant": "^0.1.5",
     "es6-promise": "^3.0.2",
+    "hypervdux": "^0.1.3",
+    "hyperx": "^1.2.0",
     "lodash": "^3.10.1",
     "redux": "^3.0.4",
     "redux-effects": "^0.4.0",
@@ -15,11 +20,12 @@
     "redux-ephemeral": "^0.1.3",
     "redux-logger": "^2.0.4",
     "redux-multi": "^0.1.12",
-    "vdux": "^2.1.1",
+    "shell-quote": "^1.4.3",
+    "vdux": "@2.2.2",
     "vdux-preset-client": "^0.2.3",
-    "virtex": "^0.1.18",
-    "virtex-element": "^0.2.2",
-    "virtex-local": "^0.2.1"
+    "virtex": "@0.1.18",
+    "virtex-element": "@0.3.0",
+    "virtex-local": "@0.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.1.18",

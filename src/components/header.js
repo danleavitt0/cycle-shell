@@ -38,7 +38,7 @@ function render ({props, children}) {
         <div style={styles.children}>
           {children && children.map(child => <div>{child}</div>)}
         </div>
-        <div style={styles.score}> score: {score} </div>
+        {isNaN(score) ? null : <div style={styles.score}> score: {score} </div>}
       </div>
     </div>
   )

@@ -68,7 +68,7 @@ function render ({props, state, local}) {
         onFocus={local(setFocus)}
         onBlur={local(removeFocus)}
         onInput={local(setText)}
-        onKeyUp={{enter: submitText}} />
+        onKeyUp={{enter: text && submitText}} />
     </div>
   )
 }
