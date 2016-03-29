@@ -1,18 +1,16 @@
-import _ from 'lodash'
-import {SUBMIT, INITIALIZE} from './actions'
+import {LOG_PROCESS, INIT_PROCESS} from './actions'
 
-function reducer (update, state, action) {
+function reducer (state, action) {
   switch (action.type) {
-    case SUBMIT:
-      const prevAction = action.payload.join(' ')
-      var newLog = _.clone(state.log, true)
-      newLog.push({action: prevAction, output: update(...action.payload)})
+    case INIT_PROCESS:
+
+    case LOG_PROCESS:
       return {
         ...state,
-        log: newLog
+        log: action.payload
       }
   }
   return state
 }
 
-export default update => reducer.bind(this, update)
+export default reducer

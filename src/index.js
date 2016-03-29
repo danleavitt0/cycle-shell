@@ -5,6 +5,8 @@ import App from './app'
 import reduce from '@f/reduce'
 import multi from 'redux-multi'
 import ready from 'domready'
+import flo from 'redux-flo'
+import handleSubmit from './middleware/handleSubmit'
 
 const defaultView = output => {
   if (typeof (output) !== 'object' || output.props) {
@@ -20,9 +22,9 @@ const defaultView = output => {
 module.exports = (userUpdate = () => {}, initialState = {}, view = defaultView) => {
   var initState = {log: [typeof (initialState) === 'string' && {output: initialState}], user: initialState}
   const {subscribe, render} = vdux({
-    reducer: reducer(userUpdate),
+    reducer,
     initialState: initState,
-    middleware: [multi]
+    middleware: [multi, flo, handleSubmit(userUpdate)]
   })
   ready(() => {
     subscribe(state => {

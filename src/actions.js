@@ -1,13 +1,8 @@
 import {parse} from 'shell-quote'
 
+const INIT_PROCESS = 'INIT_PROCESS'
+const LOG_PROCESS = 'LOG_PROCESS'
 const SUBMIT = 'SUBMIT'
-const INITIALIZE = 'INITIALIZE'
-
-function initializeApp () {
-  return {
-    type: 'INITIALIZE'
-  }
-}
 
 function submit () {
   return function (e) {
@@ -20,10 +15,20 @@ function submit () {
   }
 }
 
+function logProcess () {
+
+}
+
+function initProcess () {
+
+}
+
 export {
   submit,
-  initializeApp,
+  logProcess,
+  initProcess,
 
-  INITIALIZE,
-  SUBMIT
+  SUBMIT,
+  LOG_PROCESS,
+  INIT_PROCESS
 }
