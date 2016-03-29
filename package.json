@@ -1,6 +1,6 @@
 {
   "name": "cycle-shell",
-  "version": "0.3.7",
+  "version": "0.3.9",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
@@ -17,7 +17,7 @@
     "redux-flo": "^2.2.0",
     "redux-multi": "0.1.12",
     "shell-quote": "1.4.3",
-    "vdux": "2.2.2"
+    "vdux": "2.4.5"
   },
   "devDependencies": {
     "babel-plugin-transform-react-jsx": "^6.4.0",
