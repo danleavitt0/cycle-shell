@@ -15,12 +15,24 @@ function submit () {
   }
 }
 
-function logProcess () {
-
+function logProcess (id, output) {
+  return {
+    type: LOG_PROCESS,
+    payload: {
+      id,
+      output
+    }
+  }
 }
 
-function initProcess () {
-
+function initProcess (id, argv) {
+  return {
+    type: INIT_PROCESS,
+    payload: {
+      id,
+      argv
+    }
+  }
 }
 
 export {

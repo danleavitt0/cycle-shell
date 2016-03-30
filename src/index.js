@@ -3,8 +3,8 @@ import reducer from './reducer'
 import vdux from 'vdux/dom'
 import App from './app'
 import reduce from '@f/reduce'
-import multi from 'redux-multi'
 import ready from 'domready'
+import logger from 'redux-logger'
 import flo from 'redux-flo'
 import handleSubmit from './middleware/handleSubmit'
 
@@ -19,16 +19,16 @@ const defaultView = output => {
   }
 }
 
-module.exports = (userUpdate = () => {}, initialState = {}, view = defaultView) => {
-  var initState = {log: [typeof (initialState) === 'string' && {output: initialState}], user: initialState}
+module.exports = (userUpdate = () => {}, welcome = '', initialState = {}, view = defaultView) => {
+  var initState = {welcome, log: {}, user: initialState}
   const {subscribe, render} = vdux({
     reducer,
     initialState: initState,
-    middleware: [multi, flo, handleSubmit(userUpdate)]
+    middleware: [logger(), flo(), handleSubmit(userUpdate)]
   })
   ready(() => {
     subscribe(state => {
-      render(<App log={state.log} view={view} user={state.user} {...state} />)
+      render(<App log={state.log} view={view} user={state.user} welcome={state.welcome} />)
     })
   })
 }

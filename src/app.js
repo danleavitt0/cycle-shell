@@ -1,11 +1,8 @@
 import merge from './utils/merge'
 import element from 'vdux/element'
 import Header from './components/header'
-import Card from './components/card'
-import _ from 'lodash'
 import FeedUpdate from './components/feedUpdate'
 import Log from './components/log'
-import {initializeApp} from './actions'
 
 const styles = {
   app: {
@@ -21,12 +18,8 @@ const styles = {
   }
 }
 
-function onCreate ({props}) {
-  return initializeApp()
-}
-
 function render ({props}) {
-  const {user, view, log} = props
+  const {welcome, user, view, log} = props
   const {headerColor, headerTextColor} = user
 
   return (
@@ -40,12 +33,11 @@ function render ({props}) {
         }, styles.header)}>
         <FeedUpdate/>
       </Header>
-      <Log data={log} view={view}/>
+      <Log log={log} view={view} welcome={welcome}/>
     </div>
   )
 }
 
 export default {
-  onCreate,
   render
 }

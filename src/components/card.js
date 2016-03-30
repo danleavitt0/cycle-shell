@@ -1,5 +1,6 @@
 import element from 'vdux/element'
 import merge from '../utils/merge'
+import isArray from '@f/is-array'
 
 const getStyles = () => {
   return {
@@ -19,19 +20,19 @@ const getStyles = () => {
       fontStyle: 'italic'
     },
     paragraph: {
-      whiteSpace: 'pre-wrap'
+      whiteSpace: 'pre'
     }
   }
 }
 
 function render ({props}) {
-  const {action, item, color} = props
+  const {action, item} = props
   const styles = getStyles()
   return (
     <div style={styles.container}>
       {action && <div style={styles.action}> > {action} </div>}
       <div style={styles.paragraph}>
-        {item}
+        {isArray(item) ? item.map(child => <div>{child}</div>) : item}
       </div>
     </div>
   )

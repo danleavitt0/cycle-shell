@@ -10,23 +10,27 @@ const styles = {
 }
 
 function render ({props}) {
-  let {data, view} = props
-  const fixedLog = [...data].reverse()
+  let {log, view, welcome} = props
+  const fixedLog = Object.keys(log).reverse()
   return (
     <div>
       <div style={styles.feed}>
-        {fixedLog.map((step, i) => {
-          let {output} = step
-          if (output) {
+        {fixedLog.map((key, i) => {
+          var process = log[key]
+          if (process) {
             return (
               <Card
                 key={'item' + i}
-                action={step.action}
-                item={view(output)}
-                color={step.color} />
+                action={process.action}
+                item={process.output.map(view)}
+                color={process.color} />
             )
           }
         })}
+        {welcome && <Card
+          key={0}
+          item={view(welcome)} />
+        }
       </div>
     </div>
   )

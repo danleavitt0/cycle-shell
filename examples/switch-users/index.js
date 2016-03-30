@@ -1,4 +1,4 @@
-require('../../src')(main, initialState())
+require('../../src')(main, reset())
 var maxTries = 10
 var tries = 0
 var password = 'orange juice'
@@ -10,7 +10,7 @@ var hint4 = 'people drink this at breakfast'
 var secret = 'I have 3 older sisters.'
 var gameOver = false
 
-function initialState () {
+function reset () {
   maxTries = 10
   tries = 0
   score = 1000
@@ -24,7 +24,7 @@ function main (guess) {
     return guessWord(guess)
   } else {
     if (guess === 'start') {
-      return initialState()
+      return reset()
     } else {
       return `Type start to try again`
     }
