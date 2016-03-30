@@ -1,4 +1,6 @@
-require('../../src')(main, reset())
+require('../../src')(main, {
+  welcome: reset()
+})
 var maxTries = 10
 var tries = 0
 var password = 'orange juice'

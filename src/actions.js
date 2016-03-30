@@ -3,6 +3,7 @@ import {parse} from 'shell-quote'
 const INIT_PROCESS = 'INIT_PROCESS'
 const LOG_PROCESS = 'LOG_PROCESS'
 const SUBMIT = 'SUBMIT'
+const OUT = 'OUT'
 
 function submit () {
   return function (e) {
@@ -35,11 +36,20 @@ function initProcess (id, argv) {
   }
 }
 
+function out (msg) {
+  return {
+    type: OUT,
+    payload: msg
+  }
+}
+
 export {
   submit,
   logProcess,
   initProcess,
+  out,
 
+  OUT,
   SUBMIT,
   LOG_PROCESS,
   INIT_PROCESS

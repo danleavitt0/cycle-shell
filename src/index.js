@@ -7,10 +7,14 @@ import ready from 'domready'
 import logger from 'redux-logger'
 import flo from 'redux-flo'
 import handleSubmit from './middleware/handleSubmit'
+import {out} from './actions'
+import isArray from '@f/is-array'
 
 const defaultView = output => {
   if (typeof (output) !== 'object' || output.props) {
     return output
+  } else if (isArray(output)) {
+    output.join('\n')
   } else {
     return reduce((arr, item, key) => {
       arr.push(`${key}: ${item}`)
@@ -19,12 +23,21 @@ const defaultView = output => {
   }
 }
 
-module.exports = (userUpdate = () => {}, welcome = '', initialState = {}, view = defaultView) => {
+const defaultOpts = {
+  view: defaultView,
+  initialState: {},
+  middleware: [],
+  welcome: ''
+}
+
+const cycleShell = (userUpdate, opts = {}) => {
+  let {view, initialState, middleware, welcome} = {...defaultOpts, ...opts}
+
   var initState = {welcome, log: {}, user: initialState}
   const {subscribe, render} = vdux({
     reducer,
     initialState: initState,
-    middleware: [logger(), flo(), handleSubmit(userUpdate)]
+    middleware: [flo(), handleSubmit(userUpdate), ...middleware]
   })
   ready(() => {
     subscribe(state => {
@@ -32,3 +45,6 @@ module.exports = (userUpdate = () => {}, welcome = '', initialState = {}, view =
     })
   })
 }
+
+module.exports = cycleShell
+cycleShell.out = out

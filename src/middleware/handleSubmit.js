@@ -1,5 +1,5 @@
 import isGenerator from '@f/is-generator'
-import {logProcess, initProcess, SUBMIT} from '../actions'
+import {logProcess, initProcess, SUBMIT, OUT} from '../actions'
 import {map} from 'yoco'
 
 var processCount = 0
@@ -9,8 +9,7 @@ const handleSubmit = userUpdate => ({dispatch}) => next => action => {
     dispatch(initProcess(processId, action.payload.join(' ')))
     if (isGenerator(userUpdate)) {
       const mw = action => {
-        console.log('action', action)
-        if (action.type === 'LOG') {
+        if (action.type === OUT) {
           return dispatch(logProcess(processId, action.payload))
         } else {
           return dispatch(action)
