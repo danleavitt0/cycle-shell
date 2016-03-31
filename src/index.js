@@ -26,13 +26,14 @@ const defaultOpts = {
   view: defaultView,
   initialState: {},
   middleware: [],
-  welcome: ''
+  welcome: '',
+  title: ''
 }
 
 const cycleShell = (userUpdate, opts = {}) => {
-  let {view, initialState, middleware, welcome} = {...defaultOpts, ...opts}
+  let {view, initialState, middleware, welcome, title} = {...defaultOpts, ...opts}
 
-  var initState = {welcome, log: {}, user: initialState}
+  var initState = {welcome, log: {}, user: {title: title}}
   const {subscribe, render} = vdux({
     reducer,
     initialState: initState,

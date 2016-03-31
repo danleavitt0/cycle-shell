@@ -7,7 +7,9 @@ var run = robot('192.168.1.6')
 var cycle = require('../../src/index')
 var out = cycle.out
 
-cycle(composable([run.mw])(compose(runAction, flatten(main))))
+cycle(composable([run.mw])(compose(runAction, flatten(main))), {
+  title: 'ev3'
+})
 
 var steer = move('b', 'c')
 

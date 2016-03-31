@@ -8,7 +8,7 @@ const OUT = 'OUT'
 function submit () {
   return function (e) {
     let value = e.target.value
-    let split = parse(value).map((item) => isNaN(item) ? item : parseInt(item))
+    let split = parse(value).map((item) => isNaN(item) ? item : parseFloat(item))
     return {
       type: SUBMIT,
       payload: split

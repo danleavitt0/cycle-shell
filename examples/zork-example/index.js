@@ -33,7 +33,6 @@ function initialState () {
 }
 
 function update (state, verb, noun) {
-  console.log(state, verb)
   if (verb === 'look') {
     state.output = state.currentRoom.description
     return state

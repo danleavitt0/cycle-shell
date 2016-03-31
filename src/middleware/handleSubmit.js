@@ -14,7 +14,6 @@ const handleSubmit = userUpdate => ({dispatch}) => next => action => {
         }
         return next(action)
       }
-      console.log('userUpdate', userUpdate)
       var gen = composable([mw])(userUpdate)
       return dispatch(gen(...action.payload))
     } else {
