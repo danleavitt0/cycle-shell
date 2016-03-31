@@ -8,6 +8,7 @@ import flo from 'redux-flo'
 import handleSubmit from './middleware/handleSubmit'
 import {out} from './actions'
 import isArray from '@f/is-array'
+import logger from 'redux-logger'
 
 const defaultView = output => {
   if (typeof (output) !== 'object' || output.props) {
@@ -36,7 +37,7 @@ const cycleShell = (userUpdate, opts = {}) => {
   const {subscribe, render} = vdux({
     reducer,
     initialState: initState,
-    middleware: [flo(), handleSubmit(userUpdate), ...middleware]
+    middleware: [logger(), flo(), handleSubmit(userUpdate), ...middleware]
   })
   ready(() => {
     subscribe(state => {
