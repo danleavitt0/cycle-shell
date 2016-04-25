@@ -48,10 +48,10 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "test": "npm run validate && browserify test/*.js -t babelify | tape-run",
+    "test": "browserify test/*.js -t babelify | tape-run",
     "clean": "rm -rf lib",
     "build": "babel src --out-dir lib",
-    "preversion": "npm run test && npm run build",
+    "preversion": "npm run validate && npm run test && npm run build",
     "postversion": "git push && git push --tags && npm publish --access=public",
     "validate": "standard",
     "init:travis": "travis enable && touch test/test.js",
