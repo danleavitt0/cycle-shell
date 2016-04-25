@@ -36,6 +36,7 @@
     "babel-preset-stage-2": "^6.0.0",
     "babel-tape-runner": "^2.0.1",
     "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
     "ev3-client": "^0.1.53",
     "fs": "0.0.2",
     "rimraf": "^2.5.0",
