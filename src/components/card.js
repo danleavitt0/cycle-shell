@@ -1,5 +1,5 @@
-import element from 'vdux/element'
-import merge from '../utils/merge'
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
+
 import isArray from '@f/is-array'
 
 const getStyles = () => {
@@ -32,7 +32,7 @@ function render ({props}) {
     <div style={styles.container}>
       {action && <div style={styles.action}> > {action} </div>}
       <div style={styles.paragraph}>
-        {isArray(item) ? item.map(child => <div>{child}</div>) : item}
+        {isArray(item) ? item.map((child) => <div>{child}</div>) : item}
       </div>
     </div>
   )

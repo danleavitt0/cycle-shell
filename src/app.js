@@ -1,5 +1,6 @@
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
+
 import merge from './utils/merge'
-import element from 'vdux/element'
 import Header from './components/header'
 import FeedUpdate from './components/feedUpdate'
 import Log from './components/log'

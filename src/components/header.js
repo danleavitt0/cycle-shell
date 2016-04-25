@@ -1,4 +1,5 @@
-import element from 'vdux/element'
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
+
 import merge from '../utils/merge'
 
 function getStyles () {
@@ -36,7 +37,7 @@ function render ({props, children}) {
       <div style={merge({width: innerWidth}, styles.inner)}>
         <div style={styles.title}> {title && title} </div>
         <div style={styles.children}>
-          {children && children.map(child => <div>{child}</div>)}
+          {children && children.map((child) => <div>{child}</div>)}
         </div>
         {isNaN(score) ? null : <div style={styles.score}> score: {score} </div>}
       </div>
@@ -45,7 +46,7 @@ function render ({props, children}) {
 }
 
 const initialState = () => {}
-const reducer = state => state
+const reducer = (state) => state
 
 export default {
   initialState,

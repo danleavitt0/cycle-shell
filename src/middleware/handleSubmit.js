@@ -3,12 +3,13 @@ import {logProcess, initProcess, SUBMIT, OUT} from '../actions'
 import {composable} from 'yoco'
 
 var processCount = 0
-const handleSubmit = userUpdate => ({dispatch}) => next => action => {
+
+const handleSubmit = (userUpdate) => ({dispatch}) => (next) => (action) => {
   if (action.type === SUBMIT) {
     var processId = processCount++
     dispatch(initProcess(processId, action.payload.join(' ')))
     if (isGenerator(userUpdate)) {
-      const mw = ({dispatch}) => next => action => {
+      const mw = ({dispatch}) => (next) => (action) => {
         if (action.type === OUT) {
           return dispatch(logProcess(processId, action.payload))
         }

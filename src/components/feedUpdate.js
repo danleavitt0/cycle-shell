@@ -1,4 +1,5 @@
-import element from 'vdux/element'
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
+
 import createAction from '@f/create-action'
 import {submit} from '../actions'
 import merge from '../utils/merge'
@@ -7,7 +8,7 @@ const SET_TEXT = 'SET_TEXT'
 const SET_FOCUS = 'SET_FOCUS'
 const REMOVE_FOCUS = 'REMOVE_FOCUS'
 const CLEAR_TEXT = 'CLEAR_TEXT'
-const setText = createAction(SET_TEXT, e => e.target.value)
+const setText = createAction(SET_TEXT, (e) => e.target.value)
 const setFocus = createAction(SET_FOCUS)
 const clearText = createAction(CLEAR_TEXT)
 const removeFocus = createAction(REMOVE_FOCUS)
@@ -55,7 +56,7 @@ function initialState () {
 function render ({props, state, local}) {
   const {text, focus} = state
   const styles = getStyles()
-  const submitText = [submit(text), local(clearText)]
+  const submitText = (e) => submit(e.target.value)
 
   return (
     <div style={styles.container}>
@@ -68,7 +69,7 @@ function render ({props, state, local}) {
         onFocus={local(setFocus)}
         onBlur={local(removeFocus)}
         onInput={local(setText)}
-        onKeyUp={{enter: text && submitText}} />
+        onKeyUp={{enter: text && [submitText, local(clearText)]}} />
     </div>
   )
 }

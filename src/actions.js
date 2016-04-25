@@ -5,14 +5,11 @@ const LOG_PROCESS = 'LOG_PROCESS'
 const SUBMIT = 'SUBMIT'
 const OUT = 'OUT'
 
-function submit () {
-  return function (e) {
-    let value = e.target.value
-    let split = parse(value).map((item) => isNaN(item) ? item : parseFloat(item))
-    return {
-      type: SUBMIT,
-      payload: split
-    }
+function submit (value) {
+  let split = parse(value).map((item) => isNaN(item) ? item : parseFloat(item))
+  return {
+    type: SUBMIT,
+    payload: split
   }
 }
 

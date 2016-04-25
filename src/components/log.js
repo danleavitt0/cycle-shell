@@ -1,4 +1,5 @@
-import element from 'vdux/element'
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
+
 import Card from './card'
 
 const styles = {

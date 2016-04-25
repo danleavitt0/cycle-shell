@@ -1,4 +1,5 @@
-import element from 'vdux/element'
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
+
 import reducer from './reducer'
 import vdux from 'vdux/dom'
 import App from './app'
@@ -9,7 +10,7 @@ import handleSubmit from './middleware/handleSubmit'
 import {out} from './actions'
 import isArray from '@f/is-array'
 
-const defaultView = output => {
+const defaultView = (output) => {
   if (typeof (output) !== 'object' || output.props) {
     return output
   } else if (isArray(output)) {
@@ -31,7 +32,7 @@ const defaultOpts = {
 }
 
 const cycleShell = (userUpdate, opts = {}) => {
-  let {view, initialState, middleware, welcome, title} = {...defaultOpts, ...opts}
+  let {view, middleware, welcome, title} = {...defaultOpts, ...opts}
 
   var initState = {welcome, log: {}, user: {title: title}}
   const {subscribe, render} = vdux({
@@ -40,7 +41,7 @@ const cycleShell = (userUpdate, opts = {}) => {
     middleware: [flo(), handleSubmit(userUpdate), ...middleware]
   })
   ready(() => {
-    subscribe(state => {
+    subscribe((state) => {
       render(<App log={state.log} view={view} user={state.user} welcome={state.welcome} />)
     })
   })
