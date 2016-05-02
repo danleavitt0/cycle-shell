@@ -6,7 +6,7 @@ import App from './app'
 import reduce from '@f/reduce'
 import ready from 'domready'
 import flo from 'redux-flo'
-import handleSubmit from './middleware/handleSubmit'
+import handleSubmit, {countEmitter} from './middleware/handleSubmit'
 import {out} from './actions'
 import isArray from '@f/is-array'
 
@@ -45,6 +45,7 @@ const cycleShell = (userUpdate, opts = {}) => {
       render(<App log={state.log} view={view} user={state.user} welcome={state.welcome} />)
     })
   })
+  return countEmitter
 }
 
 module.exports = cycleShell
