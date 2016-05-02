@@ -45,7 +45,9 @@ const cycleShell = (userUpdate, opts = {}) => {
       render(<App log={state.log} view={view} user={state.user} welcome={state.welcome} />)
     })
   })
-  return countEmitter
+  return function (fn) {
+    countEmitter.on('count', fn)
+  }
 }
 
 module.exports = cycleShell

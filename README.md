@@ -33,8 +33,10 @@ Initialize a cycle shell instance. By default, the cycle shell will be placed in
 **Returns** Process count listener
 
 ```js
-var cycle = require('cycle-shell')(main)
-cycle.on('count', fn)
+var counter = require('cycle-shell')(main)
+counter(function (num) {
+  console.log(num)
+})
 ```
 
 ##### `update`
