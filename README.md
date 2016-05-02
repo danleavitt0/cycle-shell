@@ -30,6 +30,13 @@ function main (input) {
 ### cycle(update, opts)
 Initialize a cycle shell instance. By default, the cycle shell will be placed in the `<body>` of the document.
 
+**Returns** Process count listener
+
+```js
+var cycle = require('cycle-shell')(main)
+cycle.on('count', fn)
+```
+
 ##### `update`
 - type: `function`
 - An update function that gets run when the input box is submitted
