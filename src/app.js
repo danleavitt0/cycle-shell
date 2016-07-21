@@ -24,7 +24,7 @@ function render ({props}) {
   const {headerColor, headerTextColor} = user
 
   return (
-    <div style={styles.app}>
+    <div class='app' style={styles.app}>
       <Header
         title={user.title || 'Cycle'}
         innerWidth='40%'

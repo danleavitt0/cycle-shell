@@ -32,9 +32,20 @@ const defaultOpts = {
 }
 
 const cycleShell = (userUpdate, opts = {}) => {
-  let {view, middleware, welcome, title} = {...defaultOpts, ...opts}
+  let {
+    view,
+    middleware,
+    welcome,
+    title,
+    headerColor,
+    headerTextColor
+  } = {...defaultOpts, ...opts}
 
-  var initState = {welcome, log: {}, user: {title: title}}
+  var initState = {welcome, log: {}, user: {
+    title: title,
+    headerColor: headerColor,
+    headerTextColor: headerTextColor
+  }}
   const {subscribe, render} = vdux({
     reducer,
     initialState: initState,
