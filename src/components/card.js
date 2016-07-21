@@ -20,7 +20,7 @@ const getStyles = () => {
       fontStyle: 'italic'
     },
     paragraph: {
-      whiteSpace: 'pre'
+      whiteSpace: 'pre-wrap'
     }
   }
 }
