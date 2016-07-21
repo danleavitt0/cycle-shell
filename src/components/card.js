@@ -29,7 +29,7 @@ function render ({props}) {
   const {action, item} = props
   const styles = getStyles()
   return (
-    <div style={styles.container}>
+    <div class='card' style={styles.container}>
       {action && <div style={styles.action}> > {action} </div>}
       <div style={styles.paragraph}>
         {isArray(item) ? item.map((child) => <div>{child}</div>) : item}
