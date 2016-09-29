@@ -1,7 +1,7 @@
-import element from 'vdux/element' // eslint-disable-line no-unused-vars
+import element from 'vdux-smaller/element' // eslint-disable-line no-unused-vars
 
 import reducer from './reducer'
-import vdux from 'vdux/dom'
+import vdux from 'vdux-smaller/dom'
 import App from './app'
 import reduce from '@f/reduce'
 import ready from 'domready'
