@@ -1,6 +1,6 @@
 {
   "name": "cycle-shell",
-  "version": "0.4.15",
+  "version": "0.4.16",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
@@ -19,7 +19,7 @@
     "redux-flo": "2.2.0",
     "redux-multi": "0.1.12",
     "shell-quote": "1.4.3",
-    "vdux": "2.4.5",
+    "vdux-smaller": "0.1.2",
     "yoco": "1.6.2"
   },
   "devDependencies": {
