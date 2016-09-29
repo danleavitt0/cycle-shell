@@ -51,7 +51,7 @@
   "scripts": {
     "test": "browserify test/*.js -t babelify | tape-run",
     "clean": "rm -rf lib",
-    "build": "browserify src/index.js -o lib/index.js -t babelify",
+    "build": "babel src --out-dir lib",
     "preversion": "npm run validate && npm run test && npm run build",
     "postversion": "git push && git push --tags && npm publish --access=public",
     "validate": "standard",
