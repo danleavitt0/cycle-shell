@@ -18,6 +18,7 @@
     "lodash": "3.10.1",
     "redux-flo": "2.2.0",
     "redux-multi": "0.1.12",
+    "regenerator-runtime": "^0.9.6",
     "shell-quote": "1.4.3",
     "vdux": "2.4.10",
     "yoco": "1.6.2"
