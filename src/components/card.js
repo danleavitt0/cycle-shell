@@ -1,4 +1,4 @@
-import element from 'vdux-smaller/element' // eslint-disable-line no-unused-vars
+import element from 'vdux/element' // eslint-disable-line no-unused-vars
 
 import isArray from '@f/is-array'
 
