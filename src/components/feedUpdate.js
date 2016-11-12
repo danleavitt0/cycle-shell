@@ -8,7 +8,7 @@ const SET_TEXT = 'SET_TEXT'
 const SET_FOCUS = 'SET_FOCUS'
 const REMOVE_FOCUS = 'REMOVE_FOCUS'
 const CLEAR_TEXT = 'CLEAR_TEXT'
-const setText = createAction(SET_TEXT, (e) => e.target.value)
+const setText = createAction(SET_TEXT, (e) => e)
 const setFocus = createAction(SET_FOCUS)
 const clearText = createAction(CLEAR_TEXT)
 const removeFocus = createAction(REMOVE_FOCUS)
@@ -56,7 +56,7 @@ function initialState () {
 function render ({props, state, local}) {
   const {text, focus} = state
   const styles = getStyles()
-  const submitText = (e) => submit(e.target.value)
+  const submitText = (e) => submit(text)
 
   return (
     <div style={styles.container}>
